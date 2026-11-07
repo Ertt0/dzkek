@@ -2,13 +2,14 @@ class MinStack:
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
-        self.min_e = 10**10
     
     def push(self, value):
         self.value = value
         self.stack1.append(self.value)
-        if self.value <= self.min_e:
-            self.min_e = self.value
+        if self.stack2:
+            if self.value <= self.stack2[-1]:
+                self.stack2.append(self.value)
+        else:
             self.stack2.append(self.value)
 
     def pop(self):
